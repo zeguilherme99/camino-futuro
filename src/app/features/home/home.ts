@@ -1,9 +1,12 @@
 import { Component } from '@angular/core';
-import {Router} from '@angular/router';
+import {Router, RouterModule} from '@angular/router';
+import {CommonModule} from '@angular/common';
+import {MatButtonModule} from '@angular/material/button';
 
 @Component({
   selector: 'app-home',
-  imports: [],
+  standalone: true,
+  imports: [CommonModule, RouterModule, MatButtonModule],
   templateUrl: './home.html',
   styleUrl: './home.css'
 })

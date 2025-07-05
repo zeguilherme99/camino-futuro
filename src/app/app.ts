@@ -1,10 +1,13 @@
-import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import {Component} from '@angular/core';
+import {Layout} from './layout/layout';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet],
-  template: `<h1>Plataforma Refugiados</h1><router-outlet></router-outlet>`,
+  standalone: true,
+  imports: [
+    Layout
+  ],
+  template: `<app-layout></app-layout>`,
 })
 export class App {
   protected title = 'hacking-solutions';
