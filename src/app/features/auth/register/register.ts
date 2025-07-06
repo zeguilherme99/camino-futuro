@@ -6,6 +6,8 @@ import {MatInputModule} from '@angular/material/input';
 import {MatButtonModule} from '@angular/material/button';
 import {FormControl, FormsModule, ReactiveFormsModule, Validators} from '@angular/forms';
 import {AuthService} from '../../../core/services/auth.service';
+import {MatOption} from '@angular/material/core';
+import {MatSelect} from '@angular/material/select';
 
 @Component({
   selector: 'app-register',
@@ -17,7 +19,9 @@ import {AuthService} from '../../../core/services/auth.service';
     MatInputModule,
     MatButtonModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    MatSelect,
+    MatOption,
   ],
   templateUrl: './register.html',
   styleUrl: './register.css'
@@ -30,6 +34,8 @@ export class Register {
 
   constructor(private auth: AuthService, private router: Router) {}
 
+  role = new FormControl<'company' | 'refugee'>('refugee'); // valor default
+
   register() {
     if (
       this.email.valid &&
@@ -37,18 +43,12 @@ export class Register {
       this.password.value === this.confirmPassword.value
     ) {
       this.auth
-        .register(this.email.value!, this.password.value!)
+        .register(this.email.value!, this.password.value!, this.role.value!)
         .then(() => {
-          alert('Cadastro realizado com sucesso!');
-          this.router.navigate(['/login']);
+          alert('Conta criada com sucesso!');
+          this.router.navigate(['/']);
         })
-        .catch((err) => {
-          alert('Erro no cadastro: ' + err.message);
-        });
-    } else {
-      alert(
-        'Preencha todos os campos corretamente e confirme a senha corretamente.'
-      );
+        .catch(err => alert('Erro no cadastro: ' + err.message));
     }
   }
 }

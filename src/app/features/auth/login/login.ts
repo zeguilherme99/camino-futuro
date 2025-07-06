@@ -33,7 +33,7 @@ export class Login {
       this.auth
         .login(this.email.value!, this.password.value!)
         .then(() => {
-          this.router.navigate(['/refugee']); // ou lógica de rota dinâmica
+          this.router.navigate(['/']); // ou lógica de rota dinâmica
         })
         .catch((err) => {
           alert('Erro no login: ' + err.message);

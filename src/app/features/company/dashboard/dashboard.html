@@ -1,1 +1,20 @@
-<p>dashboard works!</p>
+<section class="partners-container">
+  <h1>Quem já está abrindo portas</h1>
+  <p>Conheça empresas que contratam com empatia e diversidade.</p>
+
+  <div class="partners-list">
+    <mat-card *ngFor="let partner of partners" class="partner-card">
+      <img mat-card-image [src]="partner.logoUrl" [alt]="partner.name" />
+
+      <mat-card-content>
+        <h2>{{ partner.name }}</h2>
+        <p><strong>Setor:</strong> {{ partner.sector }}</p>
+        <p><strong>Vagas abertas:</strong> {{ partner.openJobs }}</p>
+      </mat-card-content>
+
+      <mat-card-actions>
+        <button mat-raised-button color="primary" [routerLink]="['/vacancies']">Ver Vagas</button>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+</section>
